@@ -1,13 +1,28 @@
 "use client"
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '../components/logo'
 import axios from 'axios'
 
 const SignUp = () => {
 
+    const [latLngs, setLatLngs] = useState({});
+
+    const getLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                setLatLngs({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+            });
+        }
+    }
+
+    useEffect(() => {
+        getLocation();
+    }, [])
+
     const onSignUp = async () => {
-        const res = await axios.post("/api/users/signup", { userName: "DevKhadar457", password: "Test@123", email: "khadarbabaa@gmail.com" })
+        console.log(latLngs)
+        const res = await axios.post("/api/users/signup", { userName: "Dev@413157", password: "Test@123", email: "khadar123213@gmail.com", ...latLngs })
         console.log("RESPONSE", res.data)
     }
 

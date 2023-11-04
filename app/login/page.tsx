@@ -1,9 +1,21 @@
 'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Logo from '../components/logo'
+import axios from 'axios'
+
 
 const Login = () => {
+
+    useEffect(() => {
+        Login();
+    }, []);
+
+    const Login = async () => {
+        const data = await axios.get("/api/users/login");
+        console.log(data.data);
+    }
+
     return (<section className='bg-gray-50 dark:bg-gray-900'>
         <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
             <Logo />

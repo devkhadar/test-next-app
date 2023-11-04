@@ -7,7 +7,7 @@ connect()
 export async function POST(params: NextRequest) {
     try {
         const reqBody: User = await params.json();
-        
+
         return NextResponse.json({ reqBody });
     } catch (e) {
         return NextResponse.json({ msg: e });
@@ -15,5 +15,6 @@ export async function POST(params: NextRequest) {
 }
 
 export async function GET(params: NextRequest) {
-    return NextResponse.json({ msg: "Test" });
+    const user = await userModel.findOne({ email: "khadar123213@gmail.com" })
+    return NextResponse.json({ msg: user });
 }

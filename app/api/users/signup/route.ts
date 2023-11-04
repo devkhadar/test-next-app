@@ -8,20 +8,17 @@ connect()
 export async function POST(params: NextRequest) {
     try {
         const reqBody: User = await params.json();
-        console.log(reqBody)
-
         const user = await userModel.findOne({ email: reqBody.email })
 
         if (!user) {
             const salt = await bcryptjs.genSalt(10);
             const hash = await bcryptjs.hash("", salt);
-            const newUser = new userModel({ userName: reqBody.userName, password: hash, email: reqBody.email })
-            await newUser.save();
+            const savedUser = await new userModel({ userName: reqBody.userName, password: hash, email: reqBody.email, lat: reqBody.lat, lng: reqBody.lng }).save();
+            return NextResponse.json({ savedUser });
         }
-
-        return NextResponse.json({ reqBody });
+        throw "Email exists";
     } catch (e) {
-        return NextResponse.json({ msg: e });
+        return NextResponse.json({ msg: e, status: 500 });
     }
 }
 

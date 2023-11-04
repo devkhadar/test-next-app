@@ -6,6 +6,8 @@ export interface User {
     password: String;
     isVerified?: Boolean;
     isAdmin?: Boolean;
+    lat: Number;
+    lng: Number;
 }
 
 const userSchema = new mongoose.Schema({
@@ -33,7 +35,15 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
+    },
+    lat: {
+        type: Number,
+        required: [true, "Please provide password"]
+    },
+    lng: {
+        type: Number,
+        required: [true, "Please provide password"]
     }
 });
 
-export default mongoose.models.users || mongoose.model("users", userSchema);
+export default mongoose.models.user || mongoose.model("user", userSchema);
