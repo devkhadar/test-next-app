@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import { useRouter } from "next/navigation";
 import img from "../../assets/marker.png";
 
