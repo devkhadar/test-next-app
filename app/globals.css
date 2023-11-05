@@ -1,3 +1,5 @@
+@import url(https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,4 +26,60 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.rating {
+  position: absolute;
+  bottom: 8px;
+  right: 7px;
+}
+
+.rating .star {
+  color: rgb(250 202 21);
+}
+
+.rating .distance {
+  font-weight: bold;
+}
+
+.showOnMapUI {
+  position: absolute;
+  top: 36px;
+  right: 171px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.showOnMap {
+  position: absolute;
+  top: 85px;
+  right: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.showOnMap span {
+  color: black !important;
+  font-weight: bold !important;
+}
+
+.rooms {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 10px;
+  /* justify-content: center; */
+  /* border: 1px solid red; */
+}
+
+.rooms .child {
+}
+
+.mapboxgl-canvas-container {
+  height: 100vh;
+}
+
+.mapboxgl-popup {
+  color: black !important;
+  max-width: 400px;
+  font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
 }

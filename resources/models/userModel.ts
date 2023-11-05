@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 export interface User {
     userName: string;
     email: String;
-    password: String;
+    password: string;
     isVerified?: Boolean;
     isAdmin?: Boolean;
     lat: Number;
     lng: Number;
+    _id:string;
 }
 
 const userSchema = new mongoose.Schema({
